@@ -20,8 +20,7 @@ model User {
   password String
 
   bankAccounts BankAccount[]
-  transactions  Transaction[]
-  categories   Category[]
+  categories     Category[]
 
   @@map("users")
 }
@@ -42,44 +41,28 @@ model BankAccount {
   type           BankAccountType
   color          String
 
-  user        User          @relation(fields: [userId], references: [id], onDelete: Cascade)
-  transactions Transaction[]
+  user User @relation(fields: [userId], references: [id])
 
   @@map("bank_accounts")
 }
 
-enum TransactionType {
+enum  TransactionType {
   INCOME
   EXPENSE
 
   @@map("transaction_type")
 }
 
-model Category {
-  id     String          @id @db.Uuid
-  userId String          @map("user_id") @db.Uuid
-  name   String          @unique
-  icon   String
-  type   TransactionType
 
-  user        User          @relation(fields: [userId], references: [id], onDelete: Cascade)
-  transactions Transaction[]
+
+model Category {
+  id      String @id @db.Uuid
+  userId String @map("user_id") @db.Uuid
+  name    String @unique
+  icon    String
+  type TransactionType
+
+  user   User   @relation(fields: [userId], references: [id])
 
   @@map("categories")
-}
-
-model Transaction {
-  id            String   @id @db.Uuid
-  userId        String   @map("user_id") @db.Uuid
-  bankAccountId String   @map("bank_account_id") @db.Uuid
-  categoryId    String?   @map("category_id") @db.Uuid
-  name          String   @unique
-  value         Float
-  date          DateTime
-
-  user        User        @relation(fields: [userId], references: [id], onDelete: Cascade)
-  bankAccount BankAccount @relation(fields: [bankAccountId], references: [id], onDelete: Cascade)
-  category    Category?    @relation(fields: [categoryId], references: [id], onDelete: SetNull)
-
-  @@map("transactions")
 }
