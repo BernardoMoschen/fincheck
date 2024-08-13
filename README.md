@@ -1,5 +1,4 @@
 ## Description
-"
 [Nest](https://github.com/nestjs/nest) and [Prisma](https://www.prisma.io/) API repository for the FINCHECK project.
 
 ## Installation
