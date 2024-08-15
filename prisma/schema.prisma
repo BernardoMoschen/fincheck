@@ -58,7 +58,7 @@ enum TransactionType {
 model Category {
   id     String          @id @default(uuid()) @db.Uuid
   userId String          @map("user_id") @db.Uuid
-  name   String          @unique
+  name   String          
   icon   String
   type   TransactionType
 
