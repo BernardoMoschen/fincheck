@@ -5,7 +5,7 @@ import { UpdateBankAccountDto } from './dto/update-bank-account.dto';
 @Injectable()
 export class BankAccountsService {
   create(createBankAccountDto: CreateBankAccountDto) {
-    return 'This action adds a new bankAccount';
+    return `This action adds a new bankAccount ${createBankAccountDto}`;
   }
 
   findAll() {
@@ -17,7 +17,7 @@ export class BankAccountsService {
   }
 
   update(id: number, updateBankAccountDto: UpdateBankAccountDto) {
-    return `This action updates a #${id} bankAccount`;
+    return `This action updates a bankAccount ${id} ${updateBankAccountDto}`;
   }
 
   remove(id: number) {
