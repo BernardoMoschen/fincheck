@@ -29,21 +29,22 @@ export class BankAccountsController {
     return this.bankAccountsService.findAllByUserId(userId);
   }
 
-  @Get(':id')
-  findOne(@Param('id') id: string) {
-    return this.bankAccountsService.findOne(+id);
-  }
+  // @Get(':bankAccountId')
+  // findOne(@Param('id') id: string) {
+  //   return this.bankAccountsService.findOne(id);
+  // }
 
-  @Put(':id')
+  @Put(':bankAccountId')
   update(
-    @Param('id') id: string,
+    @ActiveUserId() userId: string,
+    @Param('bankAccountId') id: string,
     @Body() updateBankAccountDto: UpdateBankAccountDto,
   ) {
-    return this.bankAccountsService.update(+id, updateBankAccountDto);
+    return this.bankAccountsService.update(userId, id, updateBankAccountDto);
   }
 
-  @Delete(':id')
-  remove(@Param('id') id: string) {
+  @Delete(':bankAccountId')
+  remove(@Param('bankAccountId') id: string) {
     return this.bankAccountsService.remove(+id);
   }
 }
