@@ -28,14 +28,9 @@ export class BankAccountsController {
   }
 
   @Get()
-  findAll(@ActiveUserId() userId: string) {
+  findAllByUserId(@ActiveUserId() userId: string) {
     return this.bankAccountsService.findAllByUserId(userId);
   }
-
-  // @Get(':bankAccountId')
-  // findOne(@Param('id') id: string) {
-  //   return this.bankAccountsService.findOne(id);
-  // }
 
   @Put(':bankAccountId')
   update(

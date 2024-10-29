@@ -11,8 +11,12 @@ export class TransactionsService {
     return `This action adds a new transaction ${createTransactionDto}`;
   }
 
-  findAll() {
-    return `This action returns all transactions`;
+  findAllByUserId(userId: string) {
+    return this.transactionsRepo.findMany({
+      where: {
+        userId,
+      },
+    });
   }
 
   update(id: number, updateTransactionDto: UpdateTransactionDto) {
