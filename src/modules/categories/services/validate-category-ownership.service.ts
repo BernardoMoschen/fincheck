@@ -6,7 +6,7 @@ export class ValidateCategoryOwnershipService {
   constructor(private readonly categoriesRepo: CategoriesRepository) {}
 
   async validate(userId: string, categoryID: string) {
-    const isOwner = this.categoriesRepo.findFirst({
+    const isOwner = await this.categoriesRepo.findFirst({
       where: { userId, id: categoryID },
     });
 
