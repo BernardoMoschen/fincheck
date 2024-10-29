@@ -37,7 +37,7 @@ export class BankAccountsService {
     bankAccountId: string,
     updateBankAccountDto: UpdateBankAccountDto,
   ) {
-    this.validateBankAccountOwnership.validate(userId, bankAccountId);
+    await this.validateBankAccountOwnership.validate(userId, bankAccountId);
 
     const { color, initialBalance, name, type } = updateBankAccountDto;
 
@@ -55,7 +55,7 @@ export class BankAccountsService {
   }
 
   async remove(userId: string, bankAccountId: string) {
-    this.validateBankAccountOwnership.validate(userId, bankAccountId);
+    await this.validateBankAccountOwnership.validate(userId, bankAccountId);
 
     await this.bankAccountsRepo.delete({
       where: {

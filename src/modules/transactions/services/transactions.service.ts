@@ -41,7 +41,12 @@ export class TransactionsService {
     const { bankAccountId, categoryId, date, name, type, value } =
       updateTransactionDto;
 
-    await this.validateEntitiesOwnership({ userId, bankAccountId, categoryId });
+    await this.validateEntitiesOwnership({
+      userId,
+      bankAccountId,
+      categoryId,
+      transactionId,
+    });
     return this.transactionsRepo.update({
       where: {
         id: transactionId,
