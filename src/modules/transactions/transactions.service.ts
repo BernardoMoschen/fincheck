@@ -5,19 +5,15 @@ import { UpdateTransactionDto } from './dto/update-transaction.dto';
 @Injectable()
 export class TransactionsService {
   create(createTransactionDto: CreateTransactionDto) {
-    return 'This action adds a new transaction';
+    return `This action adds a new transaction ${createTransactionDto}`;
   }
 
   findAll() {
     return `This action returns all transactions`;
   }
 
-  findOne(id: number) {
-    return `This action returns a #${id} transaction`;
-  }
-
   update(id: number, updateTransactionDto: UpdateTransactionDto) {
-    return `This action updates a #${id} transaction`;
+    return `This action updates a #${id} transaction ${updateTransactionDto}`;
   }
 
   remove(id: number) {
