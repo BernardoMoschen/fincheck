@@ -13,6 +13,7 @@ CREATE TABLE "transactions" (
     "name" TEXT NOT NULL,
     "value" DOUBLE PRECISION NOT NULL,
     "date" TIMESTAMP(3) NOT NULL,
+    "type" "transaction_type" NOT NULL,
 
     CONSTRAINT "transactions_pkey" PRIMARY KEY ("id")
 );

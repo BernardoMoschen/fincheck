@@ -76,6 +76,8 @@ model Transaction {
   name          String   @unique
   value         Float
   date          DateTime
+  type   TransactionType
+
 
   user        User        @relation(fields: [userId], references: [id], onDelete: Cascade)
   bankAccount BankAccount @relation(fields: [bankAccountId], references: [id], onDelete: Cascade)
