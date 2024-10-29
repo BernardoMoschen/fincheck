@@ -2,7 +2,7 @@ import { Global, Module } from '@nestjs/common';
 import { PrismaService } from './prisma.service';
 import { UsersRepository } from './repositories/users.repositories';
 import { CategoriesRepository } from './repositories/categories.repositories';
-import { BankAccountsRepository } from './repositories/bankAccounts.respositories';
+import { BankAccountsRepository } from './repositories/bankAccounts.repositories';
 
 @Global()
 @Module({
