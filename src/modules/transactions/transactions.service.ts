@@ -7,8 +7,10 @@ import { TransactionsRepository } from 'src/shared/database/repositories/transac
 export class TransactionsService {
   constructor(private readonly transactionsRepo: TransactionsRepository) {}
 
-  create(createTransactionDto: CreateTransactionDto) {
-    return `This action adds a new transaction ${createTransactionDto}`;
+  create(userId: string, createTransactionDto: CreateTransactionDto) {
+    return this.transactionsRepo.create({
+      data: { userId, ...createTransactionDto },
+    });
   }
 
   findAllByUserId(userId: string) {
