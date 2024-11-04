@@ -5,6 +5,7 @@ import { UpdateTransactionDto } from '../dto/update-transaction.dto';
 import { TransactionsRepository } from 'src/shared/database/repositories/transactions.repositories';
 import { ValidateCategoryOwnershipService } from '../../categories/services/validate-category-ownership.service';
 import { ValidateTransactionOwnershipService } from './validate-transaction-ownership.service';
+import { TransactionType } from '../entities/Transaction';
 
 @Injectable()
 export class TransactionsService {
@@ -31,6 +32,7 @@ export class TransactionsService {
       month: number;
       year: number;
       bankAccountId?: string;
+      type?: TransactionType;
     },
   ) {
     return this.transactionsRepo.findMany({
@@ -41,6 +43,7 @@ export class TransactionsService {
           lt: new Date(Date.UTC(filters.year, filters.month)),
         },
         bankAccountId: filters.bankAccountId,
+        type: filters.type,
       },
     });
   }

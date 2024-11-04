@@ -5,7 +5,6 @@ export class OptionalParseUUIDPipe extends ParseUUIDPipe {
     value: string,
     metadata: ArgumentMetadata,
   ): Promise<string> {
-    console.log(typeof value);
     //TODO: -  remove this ugliness
     if (typeof value === 'undefined' || !value.length) {
       return undefined as unknown as string;
