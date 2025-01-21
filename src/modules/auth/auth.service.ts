@@ -78,7 +78,7 @@ export class AuthService {
       },
     });
 
-    return { name: user.name, email: user.email };
+    return this.generateAccessToken(user.id);
   }
 
   private generateAccessToken(userId: string) {
